@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
 })
 
 app.post('/client/lightsail/host', lightsail.Create);
-app.post('/lightsail/server/create', lightsail.Host);
+//app.post('/lightsail/server/create', lightsail.Host);
 
 
 app.listen(3333, () => {
