@@ -1,0 +1,19 @@
+{
+  "name": "lightsail-client",
+  "version": "1.0.0",
+  "description": "A client to deploy binaries",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuoSoftware/lightsail-client.git"
+  },
+  "author": "Duo Software Pvt Ltd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuoSoftware/lightsail-client/issues"
+  },
+  "homepage": "https://github.com/DuoSoftware/lightsail-client#readme"
+}
