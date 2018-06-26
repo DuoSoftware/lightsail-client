@@ -10,8 +10,8 @@ module.exports.Create = (req, res) => {
     let port = req.body.port;
     let filename = req.body.flow_name;
 
-    //let s3Link = "http://" + req.body.env + ".smoothflow.io/engine/BuiltExecutables/" + filename + "/" + filename
-    let s3Link = "http://" + req.body.env + ".smoothflow.io/engine/" + filename
+    let s3Link = "http://" + req.body.env + ".smoothflow.io/engine/BuiltExecutables/" + filename + "/" + filename
+    //let s3Link = "http://" + req.body.env + ".smoothflow.io/engine/" + filename
     console.log(s3Link);
 
     child = sh.exec('bash deployBinary.sh ' + filename + " " + req.body.env, {silent: false, async: true});
