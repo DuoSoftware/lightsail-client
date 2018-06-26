@@ -3,6 +3,7 @@ const config = require('config');
 const fs = require('fs');
 const schedule = require('node-schedule');
 const {exec} = require('child_process');
+const sh = require('shelljs');
 
 module.exports.Create = (req, res) => {
 
@@ -13,25 +14,36 @@ module.exports.Create = (req, res) => {
     let s3Link = "http://" + req.body.env + ".smoothflow.io/engine/" + filename
     console.log(s3Link);
 
-    let userdata = "sudo su \nwget \"" + s3Link + "\" \nchmod 777 " + filename + " \n./" + filename + " &"
+    child = sh.exec('bash deployBinary.sh ' + filename + " " + req.body.env, {silent: false, async: true});
 
-    exec(`wget ${s3Link}`, (err, stdout, stderr) => {
-        if (err) {
-            res.send({IsSuccess: false, Message: err})
-        } else {
-            exec(`chmod 777 ${filename}`, (err, stdout, stderr) => {
+    child.on('exit', function (c) {
+        console.log(c);
+        res.send({IsSuccess: true, Message: "Binary hosted successfully."});
+    });
+
+    /*
+        exec(`sudo rm ${filename}`, (err, stdout, stderr) => {
+            exec(`sudo wget ${s3Link}`, (err, stdout, stderr) => {
                 if (err) {
+                    console.log("error getting file");
                     res.send({IsSuccess: false, Message: err})
                 } else {
-                    exec(`./${filename} &`, (err, stdout, stderr) => {
+                    console.log("file recieved");
+                    exec(`chmod 777 ${filename}`, (err, stdout, stderr) => {
                         if (err) {
+                            console.log("error giving permission");
                             res.send({IsSuccess: false, Message: err})
                         } else {
-                            res.send({IsSuccess: true, Message: "All okay...."})
+                            console.log("permission given");
+                            exec(`ps -A`, (err, stdout, stderr) => {
+                                console.log("file executed");
+                                res.send({IsSuccess: true, Message: "All okay...."});
+                            });
                         }
                     });
                 }
             });
-        }
-    });
+        });
+    */
+
 }
