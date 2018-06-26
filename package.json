@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/DuoSoftware/lightsail-client/issues"
   },
-  "homepage": "https://github.com/DuoSoftware/lightsail-client#readme"
+  "homepage": "https://github.com/DuoSoftware/lightsail-client#readme",
+  "dependencies": {
+    "async": "^2.6.1",
+    "aws-sdk": "^2.263.1",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "config": "^1.30.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "moment": "^2.22.2",
+    "request": "^2.87.0"
+  }
 }
