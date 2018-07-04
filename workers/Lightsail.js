@@ -47,3 +47,15 @@ module.exports.Create = (req, res) => {
     */
 
 }
+
+module.exports.Delete = (req, res) => {
+    let filename = req.params.name;
+
+    child = sh.exec('bash dropWorkflow.sh ' + filename, {silent: false, async: true});
+
+    child.on('exit', function (c) {
+        console.log(c);
+        res.send({IsSuccess: true, Message: "Workflow dropped successfully."});
+    });
+
+}
