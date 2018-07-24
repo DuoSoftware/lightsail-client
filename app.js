@@ -32,7 +32,7 @@ app.del('/client/lightsail/flowname/:name', lightsail.Delete);
 
 
 app.listen(3333, () => {
-    init();
+    //init();
     console.log("LightSail Client App started...")
 });
 
