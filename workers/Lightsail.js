@@ -14,7 +14,13 @@ module.exports.Create = (req, res) => {
     //let s3Link = "http://" + req.body.env + ".smoothflow.io/engine/" + filename
     console.log(s3Link);
 
-    child = sh.exec('bash deployBinary.sh ' + filename + " " + req.body.env, {silent: false, async: true});
+    let link = 'smoothflow.io';
+    if(req.body.env === 'dev'){
+        link = 'dev.smoothflow.io';
+    }
+
+
+    child = sh.exec('bash deployBinary.sh ' + filename + " " + link, {silent: false, async: true});
 
     child.on('exit', function (c) {
         console.log(c);
