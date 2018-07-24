@@ -5,6 +5,7 @@ const app = express();
 const config = require('config');
 const moment = require('moment');
 const lightsail = require('./workers/Lightsail');
+const sh = require('shelljs');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -31,8 +32,18 @@ app.del('/client/lightsail/flowname/:name', lightsail.Delete);
 
 
 app.listen(3333, () => {
+    init();
     console.log("LightSail Client App started...")
 });
+
+
+function init() {
+    child = sh.exec('bash init.sh', {silent: false, async: true});
+
+    child.on('exit', function (c) {
+        console.log(c);
+    });
+}
 
 
 
