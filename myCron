@@ -1,1 +1,2 @@
 @reboot /usr/bin/forever start /lightsail-client/app.js
+@reboot /usr/bin/forever start /smoothflow-activity-server/app.js

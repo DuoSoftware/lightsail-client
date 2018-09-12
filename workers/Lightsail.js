@@ -20,10 +20,12 @@ module.exports.Create = (req, res) => {
     }
 
 
+
     child = sh.exec('bash deployBinary.sh ' + filename + " " + link, {silent: false, async: true});
 
     child.on('exit', function (c) {
         console.log(c);
+
         res.send({IsSuccess: true, Message: "Binary hosted successfully."});
     });
 
