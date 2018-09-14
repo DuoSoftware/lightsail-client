@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/client/lightsail/host', lightsail.Create);
-app.get('/client/lightsail/host', activityServer.runWebServer);
+app.get('/activity/run', activityServer.runWebServer);
 
 app.del('/client/lightsail/flowname/:name', lightsail.Delete);
 //app.post('/lightsail/server/create', lightsail.Host);
