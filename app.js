@@ -49,7 +49,7 @@ function init() {
 }
 
 
-function runWebServer  (res){
+function runWebServer  (req,res){
 
     child = sh.exec('bash deployWebServer.sh', {silent: false, async: true});
 
