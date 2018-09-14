@@ -51,7 +51,7 @@ function init() {
 
 function runWebServer  (res){
 
-    child = shelljs.exec('bash deployWebSever.sh', {silent: false, async: true});
+    child = shelljs.exec('bash deployWebServer.sh', {silent: false, async: true});
 
     child.on('exit', function (c) {
         console.log(c);
