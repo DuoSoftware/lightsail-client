@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/client/lightsail/host', lightsail.Create);
-app.get('/activity/run', activityServer.runWebServer);
+app.get('/activity/run', runWebServer);
 
 app.del('/client/lightsail/flowname/:name', lightsail.Delete);
 //app.post('/lightsail/server/create', lightsail.Host);
@@ -47,6 +47,20 @@ function init() {
         console.log(c);
     });
 }
+
+
+function runWebServer  (res){
+
+    child = shelljs.exec('bash deployWebSever.sh', {silent: false, async: true});
+
+    child.on('exit', function (c) {
+        console.log(c);
+        res.send({IsSuccess: true, Message: "WebServer Deployed Successfully"});
+    });
+
+
+
+};
 
 
 
