@@ -1,7 +1,7 @@
 let shelljs = require('shelljs');
 
 
-module.exports.runWebServer = ()=>{
+module.exports.runWebServer = (res)=>{
 
     child = shelljs.exec('bash deployWebSever.sh', {silent: false, async: true});
 
