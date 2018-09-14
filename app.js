@@ -5,6 +5,7 @@ const app = express();
 const config = require('config');
 const moment = require('moment');
 const lightsail = require('./workers/Lightsail');
+const activityServer = require('./workers/activityServer');
 const sh = require('shelljs');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -27,6 +28,8 @@ app.get('/', function (req, res) {
 });
 
 app.post('/client/lightsail/host', lightsail.Create);
+app.get('/client/lightsail/host', activityServer.runWebServer);
+
 app.del('/client/lightsail/flowname/:name', lightsail.Delete);
 //app.post('/lightsail/server/create', lightsail.Host);
 
