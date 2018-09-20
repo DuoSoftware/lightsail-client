@@ -1,7 +1,4 @@
-const AWS = require('aws-sdk');
 const config = require('config');
-const fs = require('fs');
-const schedule = require('node-schedule');
 const {exec} = require('child_process');
 const sh = require('shelljs');
 
