@@ -6,5 +6,5 @@ git clone -b development https://duobuilduser:DuoS12345@github.com/DuoSoftware/s
 cd /smoothflow-activity-server
 npm install
 forever stop app.js
-forever start app.js
+forever start app.js $1 $2
 rm -r /smoothflow-activity-server-old
