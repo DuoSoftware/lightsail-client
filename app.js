@@ -35,13 +35,14 @@ app.del('/client/lightsail/flowname/:name', lightsail.Delete);
 
 
 app.listen(3333, () => {
-    init();
+    //Removed for ECS dist
+    //init();
     console.log("LightSail Client App started...")
 });
 
 
 function init() {
-    child = sh.exec('bash init.sh', {silent: false, async: true});
+    child = sh.exec('bash /lightsail-client/init.sh', {silent: false, async: true});
 
     child.on('exit', function (c) {
         console.log(c);
@@ -51,7 +52,7 @@ function init() {
 
 function runWebServer  (req,res){
 
-    child = sh.exec('bash deployWebServer.sh', {silent: false, async: true});
+    child = sh.exec('bash /lightsail-client/deployWebServer.sh', {silent: false, async: true});
 
     child.on('exit', function (c) {
         console.log(c);
