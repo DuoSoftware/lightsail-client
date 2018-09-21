@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/client/lightsail/host', lightsail.Create);
-app.get('/activity/run', runWebServer);
+app.get('/activity/run/:tenant/:company', runWebServer);
 
 app.del('/client/lightsail/flowname/:name', lightsail.Delete);
 //app.post('/lightsail/server/create', lightsail.Host);
@@ -52,7 +52,7 @@ function init() {
 
 function runWebServer  (req,res){
 
-    child = sh.exec('bash /lightsail-client/deployWebServer.sh', {silent: false, async: true});
+    child = sh.exec(`bash /lightsail-client/deployWebServer.sh ${req.params.tenant} ${req.params.company}`, {silent: false, async: true});
 
     child.on('exit', function (c) {
         console.log(c);
