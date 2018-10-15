@@ -56,8 +56,9 @@ function runWebServer  (req,res){
 
     child.on('exit', function (c) {
         console.log(c);
-        res.send({IsSuccess: true, Message: "WebServer Deployed Successfully"});
     });
+
+    res.send({IsSuccess: true, Message: "WebServer Deployed Successfully"});
 
 
 
